@@ -2,3 +2,4 @@ BasedOnStyle: Google
 BreakBeforeBraces: Allman
 IndentWidth: 2
 ColumnLimit: 80
+IndentAccessModifiers: true

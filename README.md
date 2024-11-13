@@ -27,8 +27,8 @@ make && ./tetris-cli
 
 ## TODO
 
-- [ ] Menu system (main menu, pause menu, game over menu)
-- [ ] Save and display top score
+- [x] Menu system (main menu, pause menu, game over menu)
+- [x] Add game over detection
+- [ ] Save and display top scores
 - [ ] Increase speed with level
 - [ ] Improve fast drop
-- [ ] Add game over detection
