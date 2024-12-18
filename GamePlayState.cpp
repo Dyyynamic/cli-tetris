@@ -287,7 +287,7 @@ void GamePlayState::draw()
   wclear(linesWin);
   box(linesWin, 0, 0);
   mvwprintw(linesWin, 1, 2, "Lines - %03d", lines);
-  wrefresh(linesWin);
+  wnoutrefresh(linesWin);
 
   // Score
   wclear(scoreWin);
@@ -296,7 +296,7 @@ void GamePlayState::draw()
   mvwprintw(scoreWin, 2, 2, "%06d", top);
   mvwprintw(scoreWin, 3, 2, "Score");
   mvwprintw(scoreWin, 4, 2, "%06d", score);
-  wrefresh(scoreWin);
+  wnoutrefresh(scoreWin);
 
   // Next piece
   wclear(nextWin);
@@ -304,14 +304,14 @@ void GamePlayState::draw()
   mvwprintw(nextWin, 1, 2, "Next");
   drawPiece(nextWin, nextPiece,
             nextPiece.type == O_PIECE || nextPiece.type == I_PIECE ? 1 : 0);
-  wrefresh(nextWin);
+  wnoutrefresh(nextWin);
 
   // Level
   wclear(levelWin);
   box(levelWin, 0, 0);
   mvwprintw(levelWin, 1, 2, "Level");
   mvwprintw(levelWin, 2, 2, "%d", level);
-  wrefresh(levelWin);
+  wnoutrefresh(levelWin);
 
   // Statistics
   wclear(statsWin);
@@ -323,14 +323,17 @@ void GamePlayState::draw()
     drawPiece(statsWin, piece, i == O_PIECE || i == I_PIECE ? 1 : 0);
     mvwprintw(statsWin, (i + 1) * 3, 11, "%03d", stats[i]);
   }
-  wrefresh(statsWin);
+  wnoutrefresh(statsWin);
 
   // Main window
   wclear(mainWin);
   box(mainWin, 0, 0);
   for (auto point : staticBlocks) drawBlock(mainWin, point);
   drawPiece(mainWin, currPiece);
-  wrefresh(mainWin);
+  wnoutrefresh(mainWin);
+
+  // Update the screen all at once
+  doupdate();
 
   mvprintw(y + 14, x + width + 1, "Press 'q'");
   mvprintw(y + 15, x + width + 1, "to quit");
